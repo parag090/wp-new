@@ -1,8 +1,8 @@
 on: 
   push:
     branches:
-      - stage
-name: 🚀 Deploy website on Stage
+      - dev
+name: 🚀 Deploy website on Dev
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -12,9 +12,9 @@ jobs:
       uses: actions/checkout@v4
     
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      uses: Parag/FTP-Deploy-Action@v4.3.5
       with:
         server: ftp.pankhaclub.com
-        username: parag@pankhaclub.com
-        password: LYW7xrgA(obH
-        server-dir: /public_html/test_stage/
+        username: ${{ secrets.ftp_username }}
+        password: ${{ secrets.ftp_password }}
+        server-dir: /public_html/test_dev/
